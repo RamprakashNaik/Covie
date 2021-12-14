@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Button callnow;
     String country = "India";
     private PieChart piechart;
-    int number = 911;
+    private int number ;
 
 
 
@@ -56,18 +56,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         init();
-
         callnow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(country == "Afghanistan") {
-                    number = 100;
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
-                }
+                call();
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+                startActivity(intent);
             }
         });
-
-
 
 
         TextView cname = findViewById(R.id.cname);
@@ -108,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                                 piechart.addPieSlice(new PieModel("Death", death, getResources().getColor(R.color.red_pie)));
 
                                 piechart.startAnimation();
+                               // call();
+
 
                             }
                         }
@@ -122,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
+
     }
 
     private void setText(String updated) {
@@ -151,5 +151,41 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private void call(){
+        if(country.equals("India")){
+            number = 1075;
+        }
+        else if(country.equals("Afghanistan")){
+            number = 11043;
+        }
+        else if(country.equals("Australia")){
+            number = 1800020080;
+        }
+        else if(country.equals("Albania")){
+            number = 116111;
+        }
+        else if(country.equals("Argentina")){
+            number = 18002004;
+        }
+        else if(country.equals("Brazil")){
+            number = 110824;
+        }
+        else if(country.equals("USA")){
+            number = 911;
+        }
+        else if(country.equals("Germany")){
+            number = 030346465100;
+        }
+        else if(country.equals("UK")){
+            number = 808800002;
+        }
+        else{
+            number = 911;
+        }
+    }
+
+
+
 
 }
